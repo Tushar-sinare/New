@@ -8,11 +8,12 @@
 
     <name>CollegeManagement</name>
     <description>Add project description here</description>
-
     <properties>
+        <sonar.organization>tushar-sinare</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-	<dependencies>
+    <dependencies>
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 	<dependency>
    		 <groupId>org.slf4j</groupId>
