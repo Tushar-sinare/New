@@ -2,6 +2,9 @@ package com.example.branch;
 
 import java.util.Scanner;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.example.colleagestaff.College;
 import com.example.college.management.student.StudentDetails;
 import com.example.college.management.teacher.TeacherDetails;
@@ -9,6 +12,8 @@ import com.example.record.CollegeRecord;
 import com.example.specification.Specification;
 
 public class BranchSelect {
+	 private static final Logger logger = LoggerFactory.getLogger(BranchSelect.class);
+
 	public void engineeringBranch(String branch, College dept, Specification specification) {
 		switch (branch.toUpperCase()) {
 		case "CL":
@@ -27,7 +32,7 @@ public class BranchSelect {
 				addDetailSpecific(Branch.Engineering.ENTC, dept, specification);
 			break;
 		default:
-			System.out.println("Invalid Key Input");
+			logger.info("Invalid Key Input");
 		}
 	}
 	public void graduationBranch(String branch, College dept, Specification specification) {
@@ -48,7 +53,7 @@ public class BranchSelect {
 			addDetailSpecific(Branch.Graduation.BCS, dept, specification);
 			break;
 		default:
-			System.out.println("Invalid Key Input");
+			logger.info("Invalid Key Input");
 		}
 
 	}
@@ -61,7 +66,7 @@ public class BranchSelect {
 		}else if("PRINCIPLE".equals(dept.name())) {
 			principleDetails(branch,dept,specification);
 		}else {
-			System.out.println("Invalid Key Input");
+			logger.info("Invalid Key Input");
 		}
 	}
 	public void addDetailSpecific(Branch.Graduation branch, College dept, Specification specification) {
@@ -72,13 +77,13 @@ public class BranchSelect {
 		}else if("PRINCIPLE".equals(dept.name())) {
 			principleDetails(branch,dept,specification);
 		}else {
-			System.out.println("Invalid Key Input");
+			logger.info("Invalid Key Input");
 		}
 	}
 	public void principleDetails(Branch.Engineering branch, College dept, Specification specification) {
 		CollegeRecord collegeRecord =new CollegeRecord();
 		try (Scanner sc = new Scanner(System.in)) {
-			System.out.println("Enter a Key For Details :\n S:Student\n T:Teacher \n ");
+			logger.info("Enter a Key For Details :\n S:Student\n T:Teacher \n ");
 			String deptartment = sc.nextLine(); 
 			collegeRecord.collegeRecordDetails(deptartment,branch,dept,specification);
 		}
@@ -86,7 +91,7 @@ public class BranchSelect {
 public void principleDetails(Branch.Graduation branch, College dept, Specification specification) {
 	CollegeRecord collegeRecord =new CollegeRecord();
 	try (Scanner sc = new Scanner(System.in)) {
-		System.out.println("Enter a Key For Details :\n S:Student\n T:Teacher \n ");
+		logger.info("Enter a Key For Details :\n S:Student\n T:Teacher \n ");
 		String recordGraduation = sc.nextLine(); 
 		collegeRecord.collegeRecordDetails(recordGraduation,branch,dept,specification);
 	}	
