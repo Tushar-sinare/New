@@ -1,12 +1,16 @@
 package com.example.colleagestaff;
 
 import java.util.Scanner;
-import com.example.specification.SpecificationDept;
-public class ColleageAdmin {
 
-	College college;
-	static String collegeName;
-	static String principleName;
+import com.example.branch.BranchSelect;
+import com.example.specification.SpecificationDept;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class ColleageAdmin {
+	private static final Logger logger = LoggerFactory.getLogger(BranchSelect.class);
+
+
 	public void callToObject(String s) {
 		if(s!=null && !s.isEmpty()) {
 	switch(s.toUpperCase()) {
@@ -20,35 +24,31 @@ public class ColleageAdmin {
 		callToSpecification(College.PRINCIPLE);
 		break;
 		default: 
-			System.out.println("Invalid Key");
+		logger.info("Invalid Key");
 	}
 	}
 	}
 	public void callToSpecification(College str) {
 		SpecificationDept specificationDept =new SpecificationDept(str);
-		System.out.println("Enter a Key For Operation :\n E:Engineenring \n G:Graduation \n ");
-		try (Scanner sc = new Scanner(System.in)) {
+		System.out.println("Enter a Key For Operation :\n E:Engineering \n G:Graduation \n ");
+		Scanner sc = new Scanner(System.in);
 			String spec = sc.next();
-			if(!spec.isEmpty() && spec!= null) {
+			if(!spec.isEmpty()) {
 			specificationDept.specificationDetails(spec);
 			}else {
-				System.out.println("Please insert key do not null pass");
+				logger.info("Please insert key do not null pass");
 			}
 		}
-	}
+
 	
 	public static void main(String[] args) {
 		ColleageAdmin colleageAdmin =new ColleageAdmin();
-		//System.out.println("Enter Your College Name");
-		System.out.println("Enter a Key For Operation :\n S:Student \n T:Teacher \n P:Principle \n");
-		try(Scanner sc = new Scanner(System.in)){
-		//collegeName = sc.nextLine();
-		//System.out.println("Enter Your Principle Name");
-		//principleName = sc.nextLine();
+		logger.info("Enter a Key For Operation :\n S:Student \n T:Teacher \n P:Principle \n");
+	Scanner sc = new Scanner(System.in);
 		
 		String s = sc.next();
 		colleageAdmin.callToObject(s);
 	}
 	}
 
-}
+
