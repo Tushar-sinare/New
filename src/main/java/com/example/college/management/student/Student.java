@@ -7,9 +7,10 @@ private int studentRollNo;
 private String studentName;
 private Long studentMobileNo;
 private String studentEmail;
-public Address address;
+
 private String specification;
 private String branch;
+public Address address;
 public int getStudentRollNo() {
 	return studentRollNo;
 }

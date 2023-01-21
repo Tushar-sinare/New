@@ -14,7 +14,7 @@ public class StudentDetails extends Colleges{
 		String branches;
 	String depts;
 	String specifications;
-	List<Student> studentDetails;
+	List<Student>studentDetail;
 	public StudentDetails(Branch.Engineering branch, College dept, Specification specification){
 		super(branch,dept,specification);		
 		this.branches = branch.name();
@@ -32,7 +32,7 @@ public class StudentDetails extends Colleges{
 		writeStudentDetailsFile(studentList);
 	}
 	public List<Student> addStudentDetails(){
-		studentDetails=new ArrayList<>();
+		studentDetail=new ArrayList<>();
 		logger.info("\nPlease Fill Student Details\n");
 		Scanner sc = new Scanner(System.in);
 		logger.info("Enter Your RollNo : ");
@@ -50,9 +50,9 @@ public class StudentDetails extends Colleges{
 		logger.info("Enter Your Permanent Address : ");
 		String pAddress = sc.nextLine();
 		Address address = new Address(cAddress,pAddress);
-		studentDetails.add(new Student(rollNo,name,mobileNo,emailId,address,specifications,branches));
+		studentDetail.add(new Student(rollNo,name,mobileNo,emailId,address,specifications,branches));
 
-		return studentDetails;
+		return studentDetail;
 	}
 	
 	
