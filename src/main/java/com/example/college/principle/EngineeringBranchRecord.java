@@ -9,6 +9,7 @@ import com.example.record.TeacherRecord;
 import com.example.specification.Specification;
 
 public class EngineeringBranchRecord {
+	static final String SHOW = "Invalid Key Input";
 public void detailsRecord(String branch,College dept, Specification specification) {
 	if(Specification.ENGINEERING ==specification) {	
 	switch (branch.toUpperCase()) {
@@ -55,7 +56,7 @@ public void detailsRecord(String branch,College dept, Specification specificatio
 				}
 				break;
 		default:
-			System.out.println("Invalid Key Input");
+			System.out.println(SHOW);
 		}
 	}else {
 		switch (branch.toUpperCase()) {
@@ -102,7 +103,7 @@ public void detailsRecord(String branch,College dept, Specification specificatio
 				}
 				break;
 		default:
-			System.out.println("Invalid Key Input");
+			System.out.println(SHOW);
 		}
 	}
 }

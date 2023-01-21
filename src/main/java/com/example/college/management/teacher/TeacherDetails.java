@@ -1,21 +1,21 @@
 package com.example.college.management.teacher;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
 import com.example.address.Address;
 import com.example.branch.Branch;
 import com.example.colleagestaff.College;
 import com.example.record.Colleges;
 import com.example.specification.Specification;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 public class TeacherDetails extends Colleges {
-	Teacher teacher;
+	private static final Logger logger = LoggerFactory.getLogger(TeacherDetails.class);
+
 	String branch;
 	String dept;
 	String specification;
-	List<Teacher> teacherDetils;
+	List<Teacher> teacherDetails;
 	public TeacherDetails(Branch.Engineering branch, College dept, Specification specification) {
 		super(branch,dept,specification);	
 		this.branch = branch.name();
@@ -24,7 +24,6 @@ public class TeacherDetails extends Colleges {
 		List<Teacher> teacherList = addTeacherDetails();
 		writeTeacherDetailsFile(teacherList);
 	}
-
 	public TeacherDetails(Branch.Graduation branch, College dept, Specification specification) {
 		super(branch,dept,specification);	
 		this.branch = branch.name();
@@ -33,33 +32,29 @@ public class TeacherDetails extends Colleges {
 		List<Teacher> teacherList = addTeacherDetails();
 		writeTeacherDetailsFile(teacherList);
 	}
-
 	public List<Teacher> addTeacherDetails() {
-		teacherDetils = new ArrayList<>();
-		System.out.println("\nPlease Fill Teacher Details\n");
-		try (Scanner sc = new Scanner(System.in)) {
-			System.out.print("Enter Your Emp ID : ");
+		teacherDetails = new ArrayList<>();
+		logger.info("\nPlease Fill Teacher Details\n");
+		Scanner sc = new Scanner(System.in);
+			logger.info("Enter Your Emp ID : ");
 			int rollNo = sc.nextInt();
 			sc.nextLine();
-			System.out.print("Enter Your Name : ");
+		logger.info("Enter Your Name : ");
 			String name = sc.nextLine();
-			System.out.print("Enter Your Mobile No : ");
+		logger.info("Enter Your Mobile No : ");
 			Long mobileNo = sc.nextLong();
 			sc.nextLine();
-			System.out.print("Enter Your Email Id : ");
+		logger.info("Enter Your Email Id : ");
 			String emailId = sc.nextLine();
-			System.out.print("Enter Your Subject : ");
+		logger.info("Enter Your Subject : ");
 			String subSpecific = sc.nextLine();
-			System.out.print("Enter Your Current Address : ");
+		logger.info("Enter Your Current Address : ");
 			String cAddress = sc.nextLine();
-			System.out.print("Enter Your Permanent Address : ");
+		logger.info("Enter Your Permanent Address : ");
 			String pAddress = sc.nextLine();
-			
 			Address address = new Address(cAddress,pAddress);
-
-			teacherDetils.add(new Teacher(rollNo, name, mobileNo, emailId, subSpecific, address, specification, branch));
-		}
-		return teacherDetils;
+			teacherDetails.add(new Teacher(rollNo, name, mobileNo, emailId, subSpecific, address, specification, branch));
+				return teacherDetails;
 	}
 
 	
