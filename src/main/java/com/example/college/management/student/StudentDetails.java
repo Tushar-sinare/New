@@ -11,10 +11,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 public class StudentDetails extends Colleges{
 	private static final Logger logger = LoggerFactory.getLogger(StudentDetails.class);
-		String branches;
-	String depts;
-	String specifications;
-	List<Student>studentDetail;
+	protected String branches;
+	protected String depts;
+	protected String specifications;
+	 List<Student>studentDetail;
 	public StudentDetails(Branch.Engineering branch, College dept, Specification specification){
 		super(branch,dept,specification);		
 		this.branches = branch.name();

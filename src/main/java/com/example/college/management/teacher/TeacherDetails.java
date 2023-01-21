@@ -12,10 +12,10 @@ import org.slf4j.LoggerFactory;
 public class TeacherDetails extends Colleges {
 	private static final Logger logger = LoggerFactory.getLogger(TeacherDetails.class);
 
-	String branch;
-	String dept;
-	String specification;
-	List<Teacher> teacherDetails;
+	protected String branch;
+	protected String dept;
+	protected String specification;
+	List<Teacher> teacherDetail;
 	public TeacherDetails(Branch.Engineering branch, College dept, Specification specification) {
 		super(branch,dept,specification);	
 		this.branch = branch.name();
@@ -33,7 +33,7 @@ public class TeacherDetails extends Colleges {
 		writeTeacherDetailsFile(teacherList);
 	}
 	public List<Teacher> addTeacherDetails() {
-		teacherDetails = new ArrayList<>();
+		teacherDetail = new ArrayList<>();
 		logger.info("\nPlease Fill Teacher Details\n");
 		Scanner sc = new Scanner(System.in);
 			logger.info("Enter Your Emp ID : ");
@@ -53,8 +53,8 @@ public class TeacherDetails extends Colleges {
 		logger.info("Enter Your Permanent Address : ");
 			String pAddress = sc.nextLine();
 			Address address = new Address(cAddress,pAddress);
-			teacherDetails.add(new Teacher(rollNo, name, mobileNo, emailId, subSpecific, address, specification, branch));
-				return teacherDetails;
+			teacherDetail.add(new Teacher(rollNo, name, mobileNo, emailId, subSpecific, address, specification, branch));
+				return teacherDetail;
 	}
 
 	
