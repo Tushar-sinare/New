@@ -28,7 +28,7 @@ public class ColleageAdmin {
 	}
 	public void callToSpecification(College str) {
 		SpecificationDept specificationDept =new SpecificationDept(str);
-		System.out.println("Enter a Key For Operation :\n E:Engineering \n G:Graduation \n ");
+		logger.info("Enter a Key For Operation :\n E:Engineering \n G:Graduation \n ");
 		Scanner sc = new Scanner(System.in);
 			String spec = sc.next();
 			if(!spec.isEmpty()) {

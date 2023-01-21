@@ -32,7 +32,7 @@ public void recordDetails(College dept, Specification specification) {
 
 		
 	}else if(Specification.GRADUATION==specification) {
-		System.out.println("Enter a Key For Graduation :\n All: All Branch\n BCA:BCA \n BBA:BBA \n BCOM:BCOM \n BSC:BSC \n BCS:BCS \n ");
+		System.out.println("Enter a Key For Graduation :\n All: All Branch\n BCA:BCA \n BBA:BBA \n BCOM : BCOM \n BSC:BSC \n BCS:BCS \n ");
 		Scanner sc = new Scanner(System.in);
 		String spec = sc.next();
 		engineeringBranchRecord.detailsRecord(spec,dept,specification);
