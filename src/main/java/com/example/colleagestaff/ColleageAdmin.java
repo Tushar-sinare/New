@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ColleageAdmin {
-	private static final Logger logger = LoggerFactory.getLogger(BranchSelect.class);
+	private static final Logger logger = LoggerFactory.getLogger(ColleageAdmin.class);
 
 
 	public void callToObject(String s) {
