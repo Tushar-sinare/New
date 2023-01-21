@@ -13,7 +13,7 @@ import com.example.specification.Specification;
 
 public class BranchSelect {
 	 private static final Logger logger = LoggerFactory.getLogger(BranchSelect.class);
-
+public static final String show = "Invalid key input";
 	public void engineeringBranch(String branch, College dept, Specification specification) {
 		switch (branch.toUpperCase()) {
 		case "CL":
@@ -32,7 +32,7 @@ public class BranchSelect {
 				addDetailSpecific(Branch.Engineering.ENTC, dept, specification);
 			break;
 		default:
-			logger.info("Invalid Key Input");
+			logger.info(show);
 		}
 	}
 	public void graduationBranch(String branch, College dept, Specification specification) {
@@ -53,47 +53,55 @@ public class BranchSelect {
 			addDetailSpecific(Branch.Graduation.BCS, dept, specification);
 			break;
 		default:
-			logger.info("Invalid Key Input");
+			logger.info(show);
 		}
 
 	}
 
 	public void addDetailSpecific(Branch.Engineering branch, College dept, Specification specification) {
-		if("STUDENT".equals(dept.name())) {
+		switch(dept.name()) {
+			case "STUDENT":
 			new StudentDetails(branch,dept,specification);
-		}else if("TEACHER".equals(dept.name())) {
+			break;
+			case "TEACHER":
 			new TeacherDetails(branch,dept,specification);
-		}else if("PRINCIPLE".equals(dept.name())) {
+			break;
+			case "PRINCIPLE":
 			principleDetails(branch,dept,specification);
-		}else {
-			logger.info("Invalid Key Input");
+			break;
+			default:
+			logger.info(show);
 		}
 	}
 	public void addDetailSpecific(Branch.Graduation branch, College dept, Specification specification) {
-		if("STUDENT".equals(dept.name())) {
-			new StudentDetails(branch,dept,specification);
-		}else if("TEACHER".equals(dept.name())) {
-			new TeacherDetails(branch,dept,specification);
-		}else if("PRINCIPLE".equals(dept.name())) {
-			principleDetails(branch,dept,specification);
-		}else {
-			logger.info("Invalid Key Input");
+		switch(dept.name()) {
+			case "STUDENT":
+				new StudentDetails(branch,dept,specification);
+				break;
+			case "TEACHER":
+				new TeacherDetails(branch,dept,specification);
+				break;
+			case "PRINCIPLE":
+				principleDetails(branch,dept,specification);
+				break;
+			default:
+				logger.info(show);
 		}
 	}
 	public void principleDetails(Branch.Engineering branch, College dept, Specification specification) {
 		CollegeRecord collegeRecord =new CollegeRecord();
-		try (Scanner sc = new Scanner(System.in)) {
+	Scanner sc = new Scanner(System.in);
 			logger.info("Enter a Key For Details :\n S:Student\n T:Teacher \n ");
 			String deptartment = sc.nextLine(); 
 			collegeRecord.collegeRecordDetails(deptartment,branch,dept,specification);
-		}
+
 	}
 public void principleDetails(Branch.Graduation branch, College dept, Specification specification) {
 	CollegeRecord collegeRecord =new CollegeRecord();
-	try (Scanner sc = new Scanner(System.in)) {
+Scanner sc = new Scanner(System.in);
 		logger.info("Enter a Key For Details :\n S:Student\n T:Teacher \n ");
 		String recordGraduation = sc.nextLine(); 
 		collegeRecord.collegeRecordDetails(recordGraduation,branch,dept,specification);
-	}	
+
 	}
 }
