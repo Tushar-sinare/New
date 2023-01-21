@@ -13,7 +13,7 @@ import com.example.specification.Specification;
 
 public class BranchSelect {
 	 private static final Logger logger = LoggerFactory.getLogger(BranchSelect.class);
-public static final String show = "Invalid key input";
+public static final String SHOW = "Invalid key input";
 	public void engineeringBranch(String branch, College dept, Specification specification) {
 		switch (branch.toUpperCase()) {
 		case "CL":
@@ -32,7 +32,7 @@ public static final String show = "Invalid key input";
 				addDetailSpecific(Branch.Engineering.ENTC, dept, specification);
 			break;
 		default:
-			logger.info(show);
+			logger.info(SHOW);
 		}
 	}
 	public void graduationBranch(String branch, College dept, Specification specification) {
@@ -53,7 +53,7 @@ public static final String show = "Invalid key input";
 			addDetailSpecific(Branch.Graduation.BCS, dept, specification);
 			break;
 		default:
-			logger.info(show);
+			logger.info(SHOW);
 		}
 
 	}
@@ -70,7 +70,7 @@ public static final String show = "Invalid key input";
 			principleDetails(branch,dept,specification);
 			break;
 			default:
-			logger.info(show);
+			logger.info(SHOW);
 		}
 	}
 	public void addDetailSpecific(Branch.Graduation branch, College dept, Specification specification) {
@@ -85,7 +85,7 @@ public static final String show = "Invalid key input";
 				principleDetails(branch,dept,specification);
 				break;
 			default:
-				logger.info(show);
+				logger.info(SHOW);
 		}
 	}
 	public void principleDetails(Branch.Engineering branch, College dept, Specification specification) {
