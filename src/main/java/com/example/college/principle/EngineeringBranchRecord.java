@@ -7,103 +7,109 @@ import com.example.record.AllTeacherRecord;
 import com.example.record.StudentRecord;
 import com.example.record.TeacherRecord;
 import com.example.specification.Specification;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class EngineeringBranchRecord {
+	private static final Logger logger = LoggerFactory.getLogger(EngineeringBranchRecord.class);
 	static final String SHOW = "Invalid Key Input";
 public void detailsRecord(String branch,College dept, Specification specification) {
-	if(Specification.ENGINEERING ==specification) {	
-	switch (branch.toUpperCase()) {
-		case "CL":
-			if(College.STUDENT==dept) {
-			new StudentRecord(dept,Branch.Engineering.CIVIL, specification);
-			}else {
-				new TeacherRecord(dept,Branch.Engineering.CIVIL, specification);	
-			}
-			break;
-		case "MECH":
-			if(College.STUDENT==dept) {
-				new StudentRecord(dept,Branch.Engineering.MECHANICAL, specification);
-				}else {
-					new TeacherRecord(dept,Branch.Engineering.MECHANICAL, specification);	
+	if(Specification.ENGINEERING !=specification) {
+		switch (branch.toUpperCase()) {
+			case "BCA":
+				if(College.STUDENT!=dept) {
+					new TeacherRecord(dept,Branch.Graduation.BCA, specification);
+					}else {
+					new StudentRecord(dept,Branch.Graduation.BCA, specification);
 				}
 				break;
-		case "IT":
-			if(College.STUDENT==dept) {
-				new StudentRecord(dept,Branch.Engineering.IT, specification);
+			case "BBA":
+				if(College.STUDENT!=dept) {
+					new TeacherRecord(dept,Branch.Graduation.BBA, specification);
 				}else {
-					new TeacherRecord(dept,Branch.Engineering.IT, specification);	
+					new StudentRecord(dept,Branch.Graduation.BBA, specification);
+
 				}
 				break;
-		case "COMP":
-			if(College.STUDENT==dept) {
-				new StudentRecord(dept,Branch.Engineering.COMPUTER, specification);
+			case "BCOM":
+				if(College.STUDENT!=dept) {
+					new TeacherRecord(dept,Branch.Graduation.BCOM, specification);
 				}else {
-					new TeacherRecord(dept,Branch.Engineering.COMPUTER, specification);	
+					new StudentRecord(dept,Branch.Graduation.BCOM, specification);
 				}
 				break;
-		case "E&T":
-			if(College.STUDENT==dept) {
-				new StudentRecord(dept,Branch.Engineering.ENTC, specification);
-				}else {
-					new TeacherRecord(dept,Branch.Engineering.ENTC, specification);	
+			case "BSC":
+				if(College.STUDENT!=dept) {
+					new TeacherRecord(dept,Branch.Graduation.BSC, specification);
+					}else {
+					new StudentRecord(dept,Branch.Graduation.BSC, specification);
 				}
 				break;
-		case "ALL":
-			if(College.STUDENT==dept) {
-				new AllStudentRecord(dept,specification);
-				}else {
-					new AllTeacherRecord(dept,specification);	
+			case "BCS":
+				if(College.STUDENT!=dept) {
+					new TeacherRecord(dept,Branch.Graduation.BCS, specification);
+								}else {
+					new StudentRecord(dept,Branch.Graduation.BCS, specification);
 				}
 				break;
-		default:
-			System.out.println(SHOW);
+			case "ALL":
+				if(College.STUDENT!=dept) {
+					new AllTeacherRecord(dept, specification);
+					}else {
+					new AllStudentRecord(dept,specification);
+				}
+				break;
+			default:
+				logger.info(SHOW);
 		}
 	}else {
 		switch (branch.toUpperCase()) {
-		case "BCA":
-			if(College.STUDENT==dept) {
-			new StudentRecord(dept,Branch.Graduation.BCA, specification);
-			}else {
-				new TeacherRecord(dept,Branch.Graduation.BCA, specification);	
-			}
-			break;
-		case "BBA":
-			if(College.STUDENT==dept) {
-				new StudentRecord(dept,Branch.Graduation.BBA, specification);
+			case "CL":
+				if(College.STUDENT!=dept) {
+					new TeacherRecord(dept,Branch.Engineering.CIVIL, specification);
 				}else {
-					new TeacherRecord(dept,Branch.Graduation.BBA, specification);	
+					new StudentRecord(dept,Branch.Engineering.CIVIL, specification);
 				}
 				break;
-		case "BCOM":
-			if(College.STUDENT==dept) {
-				new StudentRecord(dept,Branch.Graduation.BCOM, specification);
+			case "MECH":
+				if(College.STUDENT!=dept) {
+					new TeacherRecord(dept,Branch.Engineering.MECHANICAL, specification);
 				}else {
-					new TeacherRecord(dept,Branch.Graduation.BCOM, specification);	
+					new StudentRecord(dept,Branch.Engineering.MECHANICAL, specification);
 				}
 				break;
-		case "BSC":
-			if(College.STUDENT==dept) {
-				new StudentRecord(dept,Branch.Graduation.BSC, specification);
+			case "IT":
+				if(College.STUDENT!=dept) {
+					new TeacherRecord(dept,Branch.Engineering.IT, specification);
 				}else {
-					new TeacherRecord(dept,Branch.Graduation.BSC, specification);	
+					new StudentRecord(dept,Branch.Engineering.IT, specification);
 				}
 				break;
-		case "BCS":
-			if(College.STUDENT==dept) {
-				new StudentRecord(dept,Branch.Graduation.BCS, specification);
+			case "COMP":
+				if(College.STUDENT!=dept) {
+					new TeacherRecord(dept,Branch.Engineering.COMPUTER, specification);
 				}else {
-					new TeacherRecord(dept,Branch.Graduation.BCS, specification);	
+					new StudentRecord(dept,Branch.Engineering.COMPUTER, specification);
 				}
 				break;
-		case "ALL":
-			if(College.STUDENT==dept) {
-				new AllStudentRecord(dept,specification);
+			case "E&T":
+				if(College.STUDENT!=dept) {
+					new TeacherRecord(dept,Branch.Engineering.ENTC, specification);
 				}else {
-					new AllTeacherRecord(dept, specification);	
+					new StudentRecord(dept,Branch.Engineering.ENTC, specification);
+
 				}
 				break;
-		default:
-			System.out.println(SHOW);
+			case "ALL":
+				if(College.STUDENT!=dept) {
+					new AllTeacherRecord(dept,specification);
+				}else {
+					new AllStudentRecord(dept,specification);
+
+				}
+				break;
+			default:
+				logger.info(SHOW);
 		}
 	}
 }
