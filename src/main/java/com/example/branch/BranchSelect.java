@@ -8,12 +8,10 @@ import com.example.record.CollegeRecord;
 import com.example.specification.Specification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.util.Scanner;
-
 public class BranchSelect {
 	 private static final Logger logger = LoggerFactory.getLogger(BranchSelect.class);
-
+	static final String show = "Invalid Key Input";
 	public void engineeringBranch(String branch, College dept, Specification specification) {
 		switch (branch.toUpperCase()) {
 		case "CL":
@@ -32,7 +30,7 @@ public class BranchSelect {
 				addDetailSpecific(Branch.Engineering.ENTC, dept, specification);
 			break;
 		default:
-			logger.info("Invalid Key Input");
+			logger.info(show);
 		}
 	}
 	public void graduationBranch(String branch, College dept, Specification specification) {
@@ -53,7 +51,7 @@ public class BranchSelect {
 			addDetailSpecific(Branch.Graduation.BCS, dept, specification);
 			break;
 		default:
-			System.out.println("Invalid Key Input");
+			logger.info(show);
 		}
 
 	}
@@ -70,7 +68,7 @@ public class BranchSelect {
 			principleDetails(branch,dept,specification);
 			break;
 			 default:
-			System.out.println("Invalid Key Input");
+			System.out.println(show);
 		}
 	}
 	public void addDetailSpecific(Branch.Graduation branch, College dept, Specification specification) {
@@ -85,7 +83,7 @@ public class BranchSelect {
 				principleDetails(branch,dept,specification);
 				break;
 			default:
-				logger.info("Invalid Key Input");
+				logger.info(show);
 		}
 	}
 	public void principleDetails(Branch.Engineering branch, College dept, Specification specification) {
