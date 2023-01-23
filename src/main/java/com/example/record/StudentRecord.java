@@ -11,11 +11,14 @@ import java.util.Map;
 import com.example.branch.Branch;
 import com.example.colleagestaff.College;
 import com.example.specification.Specification;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class StudentRecord extends Colleges {
-	String branch;
-	String dept;
-	String specification;
+	private static final Logger logger = LoggerFactory.getLogger(StudentRecord.class);
+	protected String branch;
+	protected String dept;
+	protected String specification;
 
 	public StudentRecord(College dept, Branch.Engineering branch, Specification specification) {
 		super(branch,dept,specification);	
@@ -44,7 +47,7 @@ public class StudentRecord extends Colleges {
 		Path path = Paths.get(fileName);
 		if (Files.exists(path)) {
 			if (Files.isDirectory(path)) {
-				System.out.println("It is a directory");
+				logger.info("It is a directory");
 			} else if (Files.isRegularFile(path)) {
 				BufferedReader bufferedReader = null;
 				try {
@@ -64,7 +67,7 @@ public class StudentRecord extends Colleges {
 			}
 
 		} else {
-			System.out.println("File not found ");
+			logger.info("File not found ");
 		}
 return studentMap;
 	}

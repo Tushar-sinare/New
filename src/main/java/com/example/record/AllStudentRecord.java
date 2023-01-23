@@ -1,9 +1,6 @@
 package com.example.record;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,11 +10,16 @@ import java.util.List;
 import java.util.Map;
 import com.example.colleagestaff.College;
 import com.example.specification.Specification;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public class AllStudentRecord {
+	private static final Logger logger = LoggerFactory.getLogger(AllStudentRecord.class);
 	String dept;
 	String specification;
-public AllStudentRecord(College dept,Specification specification) {
+
+	public AllStudentRecord(College dept,Specification specification) {
 	
 	this.dept = dept.name();
 	this.specification = specification.name();
@@ -39,7 +41,7 @@ public List<String> allStudentDataBranch() {
 		Path path = Paths.get(fileName1);
 		if (Files.exists(path)) {
 			if (Files.isDirectory(path)) {
-				System.out.println("It is a directory");
+				logger.info("It is a directory");
 			}
 		else if (Files.isRegularFile(path)) {
 				BufferedReader bufferedReader = null;
@@ -53,6 +55,12 @@ public List<String> allStudentDataBranch() {
 
 				} catch (Exception e) {
 					e.printStackTrace();
+				}finally{
+					try {
+						bufferedReader.close();
+					}catch(IOException e){
+						e.printStackTrace();
+					}
 				}
 			}
 
@@ -70,7 +78,7 @@ public List<String> allStudentDataBranch() {
 		Path path = Paths.get(fileName1);
 		if (Files.exists(path)) {
 			if (Files.isDirectory(path)) {
-				System.out.println("It is a directory");
+				logger.info("It is a directory");
 			} else if (Files.isRegularFile(path)) {
 				BufferedReader bufferedReader = null;
 				try {
@@ -83,6 +91,12 @@ public List<String> allStudentDataBranch() {
 
 				} catch (Exception e) {
 					e.printStackTrace();
+				}finally{
+					try {
+						bufferedReader.close();
+					}catch(IOException e){
+						e.printStackTrace();
+					}
 				}
 			}
 
@@ -100,7 +114,7 @@ public void fetchStudentRecord(List<String>studentDetailsList) {
 	Map<String,String> studentlistheader = new HashMap<>();
 	try {
 		file.createNewFile();
-	try {
+
 		fileWrite = new FileWriter(file);
 	for(String studentList:studentDetailsList){
 		
@@ -110,19 +124,19 @@ public void fetchStudentRecord(List<String>studentDetailsList) {
 		}
 	}
 	for(Map.Entry<String, String> me:studentlistheader.entrySet()) {
-		System.out.println(me.getValue());
+		logger.info(me.getValue());
 		fileWrite.write(me.getValue()+"\n");
 	}
 	for(String studentList:studentDetailsList){
 		String str ="Roll No";
 		if(!studentList.contains(str)) {
 			count++;
-		System.out.println(studentList);
+		logger.info(studentList);
 		fileWrite.write(studentList+"\n");
 		}
 		}
 	
-	System.out.println("\n Total "+dept + " of "+specification +": "+ count);
+	logger.info("\n Total "+dept + " of "+specification +": "+ count);
 	}catch(Exception e) {
 		e.printStackTrace();
 	}finally {
@@ -134,8 +148,6 @@ public void fetchStudentRecord(List<String>studentDetailsList) {
 			}
 		}
 	}
-}catch(Exception e) {
-	e.printStackTrace();
-}
+
 	}
 }

@@ -1,10 +1,11 @@
 package com.example.record;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import com.example.colleagestaff.College;
+import com.example.specification.Specification;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -12,10 +13,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.example.colleagestaff.College;
-import com.example.specification.Specification;
 
 public class AllTeacherRecord {
+	private static final Logger logger = LoggerFactory.getLogger(AllTeacherRecord.class);
 	String dept;
 	String specification;
 public AllTeacherRecord(College dept,Specification specification) {
@@ -40,7 +40,7 @@ public List<String> allTeacherDataBranch() {
 		Path path = Paths.get(fileName1);
 		if (Files.exists(path)) {
 			if (Files.isDirectory(path)) {
-				System.out.println("It is a directory");
+				logger.info("It is a directory");
 			} else if (Files.isRegularFile(path)) {
 				BufferedReader bufferedReader = null;
 				try {
@@ -77,7 +77,7 @@ public List<String> allTeacherDataBranch() {
 		Path path = Paths.get(fileName1);
 		if (Files.exists(path)) {
 			if (Files.isDirectory(path)) {
-				System.out.println("It is a directory");
+				logger.info("It is a directory");
 			} else if (Files.isRegularFile(path)) {
 				BufferedReader bufferedReader = null;
 				try {
@@ -105,7 +105,7 @@ public void fetchTeacherRecord(List<String>teacherDetailsList) {
 	+ ".csv";
 	File file = new File(filename);
 	FileWriter fileWrite =null;
-	Map<String,String> teacherlistheader = new HashMap<>();
+	Map<String,String> teacherListHeader = new HashMap<>();
 	try {
 		file.createNewFile();
 	try {
@@ -114,11 +114,11 @@ public void fetchTeacherRecord(List<String>teacherDetailsList) {
 		
 		String str ="Emp No";
 		if(teacherList.contains(str)) {
-			teacherlistheader.put(str, teacherList);
+			teacherListHeader.put(str, teacherList);
 		}
 	}
-	for(Map.Entry<String, String> me:teacherlistheader.entrySet()) {
-		System.out.println(me.getValue());
+	for(Map.Entry<String, String> me:teacherListHeader.entrySet()) {
+		logger.info(me.getValue());
 		fileWrite.write(me.getValue()+"\n");
 	}
 	
@@ -126,13 +126,13 @@ for(String teacherList:teacherDetailsList){
 		
 		String str ="Emp No";
 		if(!teacherList.contains(str)) {
-		System.out.println(teacherList);
+		logger.info(teacherList);
 		fileWrite.write(teacherList+"\n");
 		count++;
 		}
 	}
 	
-	System.out.println("\n Total "+dept + " of "+specification +": "+ count);
+	logger.info("\n Total "+dept + " of "+specification +": "+ count);
 	}catch(Exception e) {
 		e.printStackTrace();
 	}finally {
