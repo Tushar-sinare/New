@@ -38,14 +38,14 @@ public class Teacher {
 
 	}
 	public Teacher(int teacherID, String teacherName, Long teacherMobileNo, String teacherEmail,
-			String teacherTeachSubject, Address teacherAddress, String specification, String branch) {
+			String teacherTeachSubject, Address tAddress, String specification, String branch) {
 		super();
 		this.teacherID = teacherID;
 		this.teacherName = teacherName;
 		this.teacherMobileNo = teacherMobileNo;
 		this.teacherEmail = teacherEmail;
 		this.teacherTeachSubject = teacherTeachSubject;
-		this.teacherAddress = teacherAddress;
+		this.teacherAddress = tAddress;
 		this.specification = specification;
 		this.branch = branch;
 	}
