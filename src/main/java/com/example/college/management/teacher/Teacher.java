@@ -8,7 +8,7 @@ public class Teacher {
 	private Long teacherMobileNo;
 	private String teacherEmail;
 	private String teacherTeachSubject;
-	public Address teacherAddress;
+	public static Address teacherAddress;
 	private String specification;
 	private String branch;
 	public int getTeacherID() {
