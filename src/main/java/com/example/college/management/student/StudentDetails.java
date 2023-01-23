@@ -1,7 +1,5 @@
 package com.example.college.management.student;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+
 import com.example.address.Address;
 import com.example.branch.Branch;
 import com.example.colleagestaff.College;
@@ -9,16 +7,18 @@ import com.example.record.Colleges;
 import com.example.specification.Specification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 public class StudentDetails extends Colleges{
 	private static final Logger logger = LoggerFactory.getLogger(StudentDetails.class);
 	protected String branches;
-	protected String depts;
 	protected String specifications;
 	 List<Student>studentDetail;
 	public StudentDetails(Branch.Engineering branch, College dept, Specification specification){
-		super(branch,dept,specification);		
+		super(branch,dept,specification);
 		this.branches = branch.name();
-		this.depts = dept.name();
 		this.specifications=specification.name();
 		List<Student> studentList = addStudentDetails();
 		writeStudentDetailsFile(studentList);
@@ -26,7 +26,6 @@ public class StudentDetails extends Colleges{
 	public StudentDetails(Branch.Graduation branch, College dept, Specification specification){
 		super(branch,dept,specification);	
 		this.branches = branch.name();
-		this.depts = dept.name();
 		this.specifications=specification.name();
 		List<Student> studentList = addStudentDetails();
 		writeStudentDetailsFile(studentList);
