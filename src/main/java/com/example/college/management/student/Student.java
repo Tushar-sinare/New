@@ -10,7 +10,7 @@ private String studentEmail;
 
 private String specification;
 private String branch;
-public Address add;
+public static Address add;
 public int getStudentRollNo() {
 	return studentRollNo;
 }
