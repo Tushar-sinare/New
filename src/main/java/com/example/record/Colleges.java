@@ -36,10 +36,10 @@ public abstract class Colleges implements Record {
 	public void writeStudentDetailsFile(List<Student> studentList) {
 	int rollNoList=0;
 		List<String> rollNo = new ArrayList<>();
-		String[] values=null;
+		String[] values;
 		String fileName = ".\\"+branch.toLowerCase()+""+specification.toLowerCase()+""+dept.toLowerCase()+".csv";
 		File file = new File(fileName);
-		BufferedReader bufferedReader = null;
+		BufferedReader bufferedReader;
 		FileWriter fileWrite;
 		try {
 			file.createNewFile();
