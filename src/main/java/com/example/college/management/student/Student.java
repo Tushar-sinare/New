@@ -10,7 +10,7 @@ private String studentEmail;
 
 private String specification;
 private String branch;
-public static Address add;
+Address address;
 public int getStudentRollNo() {
 	return studentRollNo;
 }
@@ -34,20 +34,20 @@ public Student() {
 	super();
 }
 public Student(int studentRollNo, String studentName, Long studentMobileNo, String studentEmail,
-		Address pAddress, String specification, String branch) {
+		Address address, String specification, String branch) {
 	super();
 	this.studentRollNo = studentRollNo;
 	this.studentName = studentName;
 	this.studentMobileNo = studentMobileNo;
 	this.studentEmail = studentEmail;
-	this.add = pAddress;
+	this.address = address;
 	this.specification = specification;
 	this.branch = branch;
 }
 @Override
 public String toString() {
 	return "Student [studentRollNo=" + studentRollNo + ", studentName=" + studentName + ", studentMobileNo="
-			+ studentMobileNo + ", studentEmail=" + studentEmail + ", studentAddress=" + add
+			+ studentMobileNo + ", studentEmail=" + studentEmail + ", studentAddress=" + address
 			+ ", specification=" + specification + ", branch=" + branch + "]";
 }
 
