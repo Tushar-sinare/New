@@ -5,6 +5,8 @@ import com.example.colleagestaff.College;
 import com.example.college.management.student.Student;
 import com.example.college.management.teacher.Teacher;
 import com.example.specification.Specification;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -12,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 public abstract class Colleges implements Record {
+	private static final Logger logger = LoggerFactory.getLogger(Colleges.class);
 	protected String branch;
 	protected String dept;
 	protected String specification;
@@ -63,14 +66,14 @@ public abstract class Colleges implements Record {
 				for(Student student:studentList) {
 					if(file.length() == 0){
 					bufferedWriter.append(student.getStudentRollNo()+","+student.getStudentName() +","+student.getStudentMobileNo()+","+student.getStudentEmail()+","+student.add+","+student.getBranch()+", "+student.getSpecification()+"\n");
-					System.out.println(records);
-					System.out.println("Please Check Record in File : "+fileName);
+						logger.info(records);
+					logger.info("Please Check Record in File : "+fileName);
 				}else if (rollNoList!=student.getStudentRollNo()) {
 					bufferedWriter.append(student.getStudentRollNo()+","+student.getStudentName() +","+student.getStudentMobileNo()+","+student.getStudentEmail()+","+student.add+","+student.getBranch()+", "+student.getSpecification()+"\n");
-					System.out.println(records);
-					System.out.println("Please Check Record in File : "+fileName);
+						logger.info(records);
+						logger.info("Please Check Record in File : "+fileName);
 				}else {
-					System.err.println("Roll Numbered Already Exists");
+						logger.info("Roll Numbered Already Exists");
 					break;
 				}
 			}
@@ -131,17 +134,17 @@ public abstract class Colleges implements Record {
 								+ teacher.getTeacherMobileNo() + "," + teacher.getTeacherEmail() + ","
 								+ teacher.getTeacherTeachSubject() + "," + teacher.teacherAddress+ ","
 								+ teacher.getBranch() + ", " + teacher.getSpecification() + "\n");
-						System.out.println(records);
-						System.out.println("Please Check Record in File : "+fileName);
+						logger.info(records);
+						logger.info("Please Check Record in File : "+fileName);
 					}else if (empNoList!=teacher.getTeacherID()) {
 						bufferedWriter.append(teacher.getTeacherID() + "," + teacher.getTeacherName() + ","
 								+ teacher.getTeacherMobileNo() + "," + teacher.getTeacherEmail() + ","
 								+ teacher.getTeacherTeachSubject() + "," + teacher.teacherAddress+ ","
 								+ teacher.getBranch() + ", " + teacher.getSpecification() + "\n");
-						System.out.println(records);
-						System.out.println("Please Check Record in File : "+fileName);
+						logger.info(records);
+						logger.info("Please Check Record in File : "+fileName);
 					} else {
-						System.err.println("Roll Numbered Already Exists");
+						logger.info("Roll Numbered Already Exists");
 						break;
 					}
 				}
@@ -170,7 +173,7 @@ public abstract class Colleges implements Record {
 			
 			
 			if(me.getKey().contains(str)||me.getKey().contains(strRoll)) {
-			System.out.println(me.getValue());
+				logger.info(me.getValue());
 			}
 		}
 		
@@ -178,10 +181,10 @@ public abstract class Colleges implements Record {
 		
 			if(!me.getKey().contains(str)||me.getKey().contains(strRoll)) {
 				count++;
-			System.out.println(me.getValue());
+				logger.info(me.getValue());
 			}
 			}
-		System.out.println("\n Total "+dept + " of "+branch +": "+ count);
+		logger.info("\n Total "+dept + " of "+branch +": "+ count);
 	}
 		
 }
