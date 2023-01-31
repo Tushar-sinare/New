@@ -67,11 +67,11 @@ public abstract class Colleges implements Record {
 					if(file.length() == 0){
 					bufferedWriter.append(student.getStudentRollNo()+","+student.getStudentName() +","+student.getStudentMobileNo()+","+student.getStudentEmail()+","+student.add+","+student.getBranch()+", "+student.getSpecification()+"\n");
 						logger.info(records);
-					logger.info("Please Check Record in File : "+fileName);
+					logger.info("Please Check Record in File : ",fileName);
 				}else if (rollNoList!=student.getStudentRollNo()) {
 					bufferedWriter.append(student.getStudentRollNo()+","+student.getStudentName() +","+student.getStudentMobileNo()+","+student.getStudentEmail()+","+student.add+","+student.getBranch()+", "+student.getSpecification()+"\n");
 						logger.info(records);
-						logger.info("Please Check Record in File : "+fileName);
+						logger.info("Please Check Record in File : ",fileName);
 				}else {
 						logger.info("Roll Numbered Already Exists");
 					break;
@@ -135,14 +135,14 @@ public abstract class Colleges implements Record {
 								+ teacher.getTeacherTeachSubject() + "," + teacher.teacherAddress+ ","
 								+ teacher.getBranch() + ", " + teacher.getSpecification() + "\n");
 						logger.info(records);
-						logger.info("Please Check Record in File : "+fileName);
+						logger.info("Please Check Record in File : ",fileName);
 					}else if (empNoList!=teacher.getTeacherID()) {
 						bufferedWriter.append(teacher.getTeacherID() + "," + teacher.getTeacherName() + ","
 								+ teacher.getTeacherMobileNo() + "," + teacher.getTeacherEmail() + ","
 								+ teacher.getTeacherTeachSubject() + "," + teacher.teacherAddress+ ","
 								+ teacher.getBranch() + ", " + teacher.getSpecification() + "\n");
 						logger.info(records);
-						logger.info("Please Check Record in File : "+fileName);
+						logger.info("Please Check Record in File : ",fileName);
 					} else {
 						logger.info("Roll Numbered Already Exists");
 						break;
@@ -184,7 +184,7 @@ public abstract class Colleges implements Record {
 				logger.info(me.getValue());
 			}
 			}
-		logger.info("\n Total "+dept + " of "+branch +": "+ count);
+		logger.info("\n Total ",dept , " of ",branch ,": ", count);
 	}
 		
 }
