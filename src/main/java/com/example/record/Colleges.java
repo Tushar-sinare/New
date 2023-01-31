@@ -18,7 +18,7 @@ public abstract class Colleges implements Record {
 	protected String branch;
 	protected String dept;
 	protected String specification;
-	public static final String records = "Record Created Successfully";
+	public static final String RECORDS = "Record Created Successfully";
 	protected Colleges(Branch.Engineering branch, College dept, Specification specification){
 		this.branch = branch.name();
 		this.dept = dept.name();
@@ -66,11 +66,11 @@ public abstract class Colleges implements Record {
 				for(Student student:studentList) {
 					if(file.length() == 0){
 					bufferedWriter.append(student.getStudentRollNo()+","+student.getStudentName() +","+student.getStudentMobileNo()+","+student.getStudentEmail()+","+student.add+","+student.getBranch()+", "+student.getSpecification()+"\n");
-						logger.info(records);
+						logger.info(RECORDS);
 					logger.info("Please Check Record in File : ",fileName);
 				}else if (rollNoList!=student.getStudentRollNo()) {
 					bufferedWriter.append(student.getStudentRollNo()+","+student.getStudentName() +","+student.getStudentMobileNo()+","+student.getStudentEmail()+","+student.add+","+student.getBranch()+", "+student.getSpecification()+"\n");
-						logger.info(records);
+						logger.info(RECORDS);
 						logger.info("Please Check Record in File : ",fileName);
 				}else {
 						logger.info("Roll Numbered Already Exists");
@@ -134,14 +134,14 @@ public abstract class Colleges implements Record {
 								+ teacher.getTeacherMobileNo() + "," + teacher.getTeacherEmail() + ","
 								+ teacher.getTeacherTeachSubject() + "," + teacher.teacherAddress+ ","
 								+ teacher.getBranch() + ", " + teacher.getSpecification() + "\n");
-						logger.info(records);
+						logger.info(RECORDS);
 						logger.info("Please Check Record in File : ",fileName);
 					}else if (empNoList!=teacher.getTeacherID()) {
 						bufferedWriter.append(teacher.getTeacherID() + "," + teacher.getTeacherName() + ","
 								+ teacher.getTeacherMobileNo() + "," + teacher.getTeacherEmail() + ","
 								+ teacher.getTeacherTeachSubject() + "," + teacher.teacherAddress+ ","
 								+ teacher.getBranch() + ", " + teacher.getSpecification() + "\n");
-						logger.info(records);
+						logger.info(RECORDS);
 						logger.info("Please Check Record in File : ",fileName);
 					} else {
 						logger.info("Roll Numbered Already Exists");
