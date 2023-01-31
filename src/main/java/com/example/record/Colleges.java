@@ -15,7 +15,7 @@ public abstract class Colleges implements Record {
 	protected String branch;
 	protected String dept;
 	protected String specification;
-	
+	public static final String records = "Record Created Successfully";
 	protected Colleges(Branch.Engineering branch, College dept, Specification specification){
 		this.branch = branch.name();
 		this.dept = dept.name();
@@ -31,7 +31,7 @@ public abstract class Colleges implements Record {
 	}
 	
 	public void writeStudentDetailsFile(List<Student> studentList) {
-		int rollNoList=0;
+	int rollNoList=0;
 		List<String> rollNo = new ArrayList<>();
 		String[] values=null;
 		String fileName = ".\\"+branch.toLowerCase()+""+specification.toLowerCase()+""+dept.toLowerCase()+".csv";
@@ -63,11 +63,11 @@ public abstract class Colleges implements Record {
 				for(Student student:studentList) {
 					if(file.length() == 0){
 					bufferedWriter.append(student.getStudentRollNo()+","+student.getStudentName() +","+student.getStudentMobileNo()+","+student.getStudentEmail()+","+student.add+","+student.getBranch()+", "+student.getSpecification()+"\n");
-					System.out.println("Record Created Successfully");
+					System.out.println(records);
 					System.out.println("Please Check Record in File : "+fileName);
 				}else if (rollNoList!=student.getStudentRollNo()) {
 					bufferedWriter.append(student.getStudentRollNo()+","+student.getStudentName() +","+student.getStudentMobileNo()+","+student.getStudentEmail()+","+student.add+","+student.getBranch()+", "+student.getSpecification()+"\n");
-					System.out.println("Record Created Successfully");
+					System.out.println(records);
 					System.out.println("Please Check Record in File : "+fileName);
 				}else {
 					System.err.println("Roll Numbered Already Exists");
@@ -131,14 +131,14 @@ public abstract class Colleges implements Record {
 								+ teacher.getTeacherMobileNo() + "," + teacher.getTeacherEmail() + ","
 								+ teacher.getTeacherTeachSubject() + "," + teacher.teacherAddress+ ","
 								+ teacher.getBranch() + ", " + teacher.getSpecification() + "\n");
-						System.out.println("Record Created Successfully1");
+						System.out.println(records);
 						System.out.println("Please Check Record in File : "+fileName);
 					}else if (empNoList!=teacher.getTeacherID()) {
 						bufferedWriter.append(teacher.getTeacherID() + "," + teacher.getTeacherName() + ","
 								+ teacher.getTeacherMobileNo() + "," + teacher.getTeacherEmail() + ","
 								+ teacher.getTeacherTeachSubject() + "," + teacher.teacherAddress+ ","
 								+ teacher.getBranch() + ", " + teacher.getSpecification() + "\n");
-						System.out.println("Record Created Successfully");
+						System.out.println(records);
 						System.out.println("Please Check Record in File : "+fileName);
 					} else {
 						System.err.println("Roll Numbered Already Exists");

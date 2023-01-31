@@ -42,7 +42,7 @@ public class StudentRecord extends Colleges {
 		String fileName = ".\\" + branch.toLowerCase() + "" + specification.toLowerCase() + "" + dept.toLowerCase()
 				+ ".csv";
 
-		Map<String, String> studentMap = new HashMap<>();
+		Map<String, String> studentMap = new HashMap<String, String>();
 
 		Path path = Paths.get(fileName);
 		if (Files.exists(path)) {
